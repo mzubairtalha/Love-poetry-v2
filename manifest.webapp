@@ -1,0 +1,31 @@
+{
+  "version": "1.0.2",
+  "name": "Love Poetry",
+  "subtitle": "Express your love through beautiful poetry",
+  "description": "Love Poetry is your go-to app for expressing love and emotions through beautifully crafted poetry. Whether you're in love, longing for someone special, or simply want to immerse yourself in the beauty of words, Love Poetry has something for everyone. With a collection of romantic verses in Urdu, English, and other languages, this app will touch your heart and soul. Download Love Poetry now and let your emotions flow through the power of poetry.",
+  "type": "web",
+  "theme_color": "#FF69B4",
+  "launch_path": "/love-poetry.html",
+  "icons": {
+    "56": "/icons/love-poetry-icon56x56.png",
+    "112": "/icons/love-poetry-icon112x112.png"
+  },
+  "permissions": {
+    "mobiledata":{},
+    "wifidata":{}
+  },
+  "categories": ["entertainment"],
+  "developer": {
+    "name": "Your Name",
+    "url": "https://example.com"
+  },
+  "locales": {
+    "en-US": {
+      "name": "Love Poetry",
+      "subtitle": "Express your love through beautiful poetry",
+      "description": "Love Poetry is your go-to app for expressing love and emotions through beautifully crafted poetry. Whether you're in love, longing for someone special, or simply want to immerse yourself in the beauty of words, Love Poetry has something for everyone. With a collection of romantic verses in Urdu, English, and other languages, this app will touch your heart and soul. Download Love Poetry now and let your emotions flow through the power of poetry."
+    }
+  },
+  "default_locale": "en-US",
+  "fullscreen": "true"
+}
