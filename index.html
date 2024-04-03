@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Poetry</title>
+<style>
+/* Your provided CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  background: #000;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.outer {
+  position: relative;
+  margin: 10px 0;
+  background: #111;
+  overflow: hidden;
+}
+.button {
+  height: 60px;
+  width: 180px;
+  border-radius: 50px;
+  margin: 5px 0;
+}
+.outer button, .outer span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.outer button {
+  background: #111;
+  color: #f2f2f2;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  z-index: 9;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.button button {
+  height: 50px;
+  width: 170px;
+  border-radius: 50px;
+}
+.outer span {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+}
+.button span {
+  border-radius: 50px;
+}
+.outer:hover span:nth-child(1) {
+  filter: blur(7px);
+}
+.outer:hover span:nth-child(2) {
+  filter: blur(14px);
+}
+.outer:hover {
+  background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+  animation: rotate 1.5s linear infinite;
+}
+.outer:focus-within {
+  outline: none;
+}
+.outer:focus-within span:nth-child(1) {
+  filter: blur(7px);
+}
+.outer:focus-within span:nth-child(2) {
+  filter: blur(14px);
+}
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 10px 0;
+  background-color: #ff4d6d;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  Love Poetry
+</div>
+
+<div class="center">
+  <div class="outer button" id="lovePoetry"><button>Love Poetry 💖</button><span></span><span></span></div>
+  <div class="outer button" id="relationshipTips"><button>Relationship Tips 📝</button><span></span><span></span></div>
+  <div class="outer button" id="romanceQuotes"><button>Romance Quotes 💞</button><span></span><span></span></div>
+  <div class="outer button" id="coupleCorner"><button>Couple's Corner 💑</button><span></span><span></span></div>
+  <div class="outer button" id="loveLetter"><button>Love Letter 💌</button><span></span><span></span></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="lovePoetry.js"></script>
+<script src="relationshipTips.js"></script>
+<script src="romanceQuotes.js"></script>
+<script src="coupleCorner.js"></script>
+<script src="loveLetter.js"></script>
+
+<script>
+// Script tags for each button
+$("#lovePoetry").click(function() {
+    window.location.href = "./lovePoetry.html";
+});
+
+$("#relationshipTips").click(function() {
+    window.location.href = "./relationshipTips.html";
+});
+
+$("#romanceQuotes").click(function() {
+    window.location.href = "./romanceQuotes.html";
+});
+
+$("#coupleCorner").click(function() {
+    window.location.href = "./coupleCorner.html";
+});
+
+$("#loveLetter").click(function() {
+    window.location.href = "./loveLetter.html";
+});
+
+// Keyboard navigation
+$(document).on('keydown', function(e) {
+    switch (e.key) {
+        case "ArrowDown":
+            if (document.activeElement.id === "") {
+                return $('#relationshipTips').focus();
+            } else if (document.activeElement.id === "relationshipTips") {
+                return $('#romanceQuotes').focus();
+            } else if (document.activeElement.id === "romanceQuotes") {
+                return $('#coupleCorner').focus();
+            } else if (document.activeElement.id === "coupleCorner") {
+                return $('#loveLetter').focus();
+            } else {
+                return;
+            }
+        case "ArrowUp":
+            if (document.activeElement.id === "relationshipTips") {
+                return $('#lovePoetry').focus();
+            } else if (document.activeElement.id === "romanceQuotes") {
+                return $('#relationshipTips').focus();
+            } else if (document.activeElement.id === "coupleCorner") {
+                return $('#romanceQuotes').focus();
+            } else if (document.activeElement.id === "loveLetter") {
+                return $('#coupleCorner').focus();
+            } else {
+                return;
+            } 
+    }
+});
+</script>
+
+</body>
+  </html>
+  
