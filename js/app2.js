@@ -307,3 +307,32 @@ window.addEventListener("keydown", handleKeyDown);
         }
     })
 });
+
+function changeQuote() {
+  const quoteEl = document.getElementById("quote");
+  const authorEl = document.getElementById("author");
+
+  // Remove existing animations
+  quoteEl.classList.remove("fade-out");
+  authorEl.classList.remove("fade-out");
+  quoteEl.style.animation = "none";
+  authorEl.style.animation = "none";
+
+  // Trigger fade out
+  void quoteEl.offsetWidth; // force reflow
+  quoteEl.classList.add("fade-out");
+  authorEl.classList.add("fade-out");
+
+  setTimeout(() => {
+    // Replace with new quote
+    const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    quoteEl.innerText = `"${newQuote.quote}"`;
+    authorEl.innerText = `- ${newQuote.author}`;
+
+    // Re-trigger fadeIn animation
+    quoteEl.classList.remove("fade-out");
+    authorEl.classList.remove("fade-out");
+    quoteEl.style.animation = "fadeInQuote 0.8s ease forwards";
+    authorEl.style.animation = "fadeInAuthor 1s ease forwards";
+  }, 300);
+}
