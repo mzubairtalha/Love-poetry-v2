@@ -3,54 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <title>Love Poetry</title>
-    <link rel="stylesheet" href="footerStyles.css">
+  <link rel="stylesheet" href="footerStyles.css">
   <link rel="stylesheet" href="style.css">
   <style>
-  body {
-    background: #f2e9e4; /* Soft background color */
-    font-family: 'Courier New', Courier, monospace;
-    padding: 0;
-    margin: 0;
-  }
-  .header {
-    z-index: 9999;
-    text-align: center;
-    padding: 0.4rem 0;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-    color: #222;
-    font-size: 13px; /* Large font size for header */
-    font-weight: bold;
-  }
-  .container {
-    padding: 20px;
-    text-align: center; /* Center the buttons */
-  }
-  .network-btn {
-    display: block;
-    width: 200px; /* Adjusted for KaiOS screen size */
-    padding: 10px;
-    margin: 10px auto;
-    text-align: center;
-    border: 2px solid transparent; /* Transparent border for focus effect */
-    border-radius: 15px; /* Rounded corners */
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-    color: #222;
-    font-size: 16px; /* Readable font size */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s ease, border-color 0.3s ease;
-    outline: none;
-    position: relative; /* Position relative for pseudo-elements */
-  }
-  .network-btn:focus {
-    animation: rotating-focus-animation 2s infinite linear;
-  }
-  @keyframes rotating-focus-animation {
-    0% { border-color: #ff0076; }
-    25% { border-color: #00ffea; }
-    50% { border-color: #ffea00; }
-    75% { border-color: #6e00ff; }
-    100% { border-color: #ff0076; }
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      text-align: center;
+      padding: 0.4rem 0;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      color: #222;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 9999;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .network-btn {
+      width: 200px;
+      padding: 12px;
+      font-size: 16px;
+      color: white;
+      background: linear-gradient(45deg, #f43b47, #453a94);
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .network-btn:hover {
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      transform: scale(1.05);
+    }
+
+    .network-btn:focus {
+      outline: none;
+      animation: pulse 2s infinite;
+      border: 3px solid #fff;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+
+    footer.softkey {
+      background: #222;
+      color: white;
+      text-align: center;
+      font-size: 14px;
+      padding: 6px 0;
+    }
+
+    #softKeysContainer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    #softkey-left, #softkey-center, #softkey-right {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
@@ -61,13 +95,14 @@
     <button id="loveButton" class="network-btn" onclick="location.href='#'">Your Poetry</button>
     <button id="poetryButton" class="network-btn" onclick="location.href='#'">Our Poetry</button>
   </div>
-    <footer class="softkey">
-        <div id="softKeysContainer">
-            <div id="softkey-left">add</div>
-            <div id="softkey-center"></div>
-            <div id="softkey-right"></div>
-        </div>
-    </footer>
+  <footer class="softkey">
+    <div id="softKeysContainer">
+      <div id="softkey-left">Add</div>
+      <div id="softkey-center"></div>
+      <div id="softkey-right"></div>
+    </div>
+  </footer>
+
   <script src='js/jquery-3.5.1.min.js'></script>
   <script src="js/main.js"></script>
   <script src="js/kaiads.v5.min.js"></script>
