@@ -39,7 +39,7 @@ html, body {
 
 .button {
   position: absolute;
-  bottom: 15px;
+  top: 8℅;
   left: 50%;
   transform: translateX(-50%);
   background-color: #ff007f;
