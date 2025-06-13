@@ -9,30 +9,31 @@
   <link rel="stylesheet" href="footerStyles.css">
   <script src="js/app.js"></script>
   <script src="kaiads.v5.min.js"></script>
- 
   <title>Love Poetry</title>
-  <style>
-  </style>
 </head>
 
-<body onload="changeQuote()">
+<body onload="startApp()">
 
   <div id="container">
-      <div id="quote"></div>
-      <div id="author"></div>
-      <div class="container">
-        
-      </div>
+    <div id="quote"></div>
+    <div id="author"></div>
+    <div class="container"></div>
   </div>
 
- <footer class="softkey">
+  <footer class="softkey">
     <div id="softKeysContainer">
-        <div id="softkey-left"></div>
-        <div id="softkey-center">Next</div>
-        <div id="softkey-right">Back</div>
+      <div id="softkey-left"></div>
+      <div id="softkey-center">Next</div>
+      <div id="softkey-right">Back</div>
     </div>
   </footer>
 
+  <script>
+    function startApp() {
+      alert("To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!");
+      changeQuote(); // load the first quote
+    }
+  </script>
 
 </body>
 
