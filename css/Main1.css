@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
+  background: white ;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -21,7 +21,7 @@ body {
   font-size: 110%;
   font-weight: bold;
   line-height: 1.6;
-  color: black;
+  color: Black;
   text-align: center;
   color: white;
   padding: 10px 20px;
