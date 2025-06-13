@@ -12,7 +12,7 @@
   <title>Love Poetry</title>
 </head>
 
-<body onload="startApp()">
+<body>
 
   <div id="container">
     <div id="quote"></div>
@@ -29,10 +29,12 @@
   </footer>
 
   <script>
-    function startApp() {
-      alert("To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!");
-      changeQuote(); // load the first quote
-    }
+    window.onload = function () {
+      alert(
+        "To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!"
+      );
+      changeQuote(); // Load the first quote
+    };
   </script>
 
 </body>
