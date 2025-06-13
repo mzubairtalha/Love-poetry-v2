@@ -3,27 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Love Poetry</title>
-  <link rel="stylesheet" href="footerStyles.css">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      font-family: 'Courier New', Courier, monospace;
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      font-family: sans-serif;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .header {
       text-align: center;
-      padding: 0.4rem 0;
-      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-      color: #222;
+      padding: 6px;
       font-size: 13px;
       font-weight: bold;
-      z-index: 9999;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #222;
     }
 
     .container {
@@ -32,58 +31,44 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      gap: 20px;
+      padding: 10px;
     }
 
     .network-btn {
-      width: 200px;
-      padding: 12px;
-      font-size: 16px;
-      color: white;
-      background: linear-gradient(45deg, #f43b47, #453a94);
+      width: 90%;
+      max-width: 220px;
+      padding: 8px;
+      margin: 6px 0;
+      font-size: 14px;
       border: none;
-      border-radius: 25px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s ease;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .network-btn:hover {
-      background: linear-gradient(45deg, #00c6ff, #0072ff);
-      transform: scale(1.05);
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ff758c, #ff7eb3);
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .network-btn:focus {
       outline: none;
-      animation: pulse 2s infinite;
-      border: 3px solid #fff;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
-      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+      border: 2px solid #fff;
+      background: linear-gradient(90deg, #43e97b, #38f9d7);
     }
 
     footer.softkey {
-      background: #222;
+      background-color: #222;
       color: white;
-      text-align: center;
-      font-size: 14px;
-      padding: 6px 0;
+      padding: 4px 10px;
+      font-size: 13px;
     }
 
     #softKeysContainer {
       display: flex;
       justify-content: space-between;
-      padding: 0 20px;
     }
 
     #softkey-left, #softkey-center, #softkey-right {
-      flex: 1;
+      width: 33.33%;
+      text-align: center;
     }
   </style>
 </head>
@@ -92,24 +77,42 @@
     <h1 class="title">Love Poetry</h1>
   </div>
   <div class="container">
-    <button id="loveButton" class="network-btn" onclick="location.href='#'">Your Poetry</button>
-    <button id="poetryButton" class="network-btn" onclick="location.href='#'">Our Poetry</button>
+    <button id="loveButton" class="network-btn" onclick="location.href='your_poetry.html'">Your Poetry</button>
+    <button id="poetryButton" class="network-btn" onclick="location.href='our_poetry.html'">Our Poetry</button>
   </div>
+
   <footer class="softkey">
     <div id="softKeysContainer">
       <div id="softkey-left">Add</div>
-      <div id="softkey-center"></div>
+      <div id="softkey-center">Open</div>
       <div id="softkey-right"></div>
     </div>
   </footer>
 
-  <script src='js/jquery-3.5.1.min.js'></script>
-  <script src="js/main.js"></script>
-  <script src="js/kaiads.v5.min.js"></script>
   <script>
+    const buttons = document.querySelectorAll('.network-btn');
+    let currentIndex = 0;
+
+    // Initial focus
+    buttons[currentIndex].focus();
+
     document.addEventListener('keydown', function(event) {
-      if (event.key === 'SoftLeft') {
-        window.location.href = 'index0.html';
+      if (event.key === 'ArrowDown') {
+        currentIndex = (currentIndex + 1) % buttons.length;
+        buttons[currentIndex].focus();
+      }
+
+      else if (event.key === 'ArrowUp') {
+        currentIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+        buttons[currentIndex].focus();
+      }
+
+      else if (event.key === 'Enter' || event.key === 'SoftCenter') {
+        buttons[currentIndex].click();
+      }
+
+      else if (event.key === 'SoftLeft') {
+        window.location.href = 'index0.html'; // Your "Add" page
       }
     });
   </script>
