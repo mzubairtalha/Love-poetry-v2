@@ -46,17 +46,12 @@
       color: #fff;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease, background 0.3s ease;
     }
 
     .network-btn:focus {
       outline: none;
       border: 2px solid #fff;
       background: linear-gradient(90deg, #43e97b, #38f9d7);
-    }
-
-    .network-btn:hover {
-      transform: scale(1.02);
     }
 
     footer.softkey {
@@ -78,36 +73,37 @@
   </style>
 </head>
 <body>
+
   <div class="header">
     <h1 class="title">Love Poetry</h1>
   </div>
 
   <div class="container">
-    <button id="loveButton" class="network-btn" onclick="location.href='your_poetry.html'">Your Poetry</button>
-    <button id="poetryButton" class="network-btn" onclick="location.href='our_poetry.html'">Our Poetry</button>
+    <button id="loveButton" class="network-btn" onclick="alert('Your Poetry clicked')">Your Poetry</button>
+    <button id="poetryButton" class="network-btn" onclick="alert('Our Poetry clicked')">Our Poetry</button>
+    <button id="softRightAction" style="display:none" onclick="window.location.href='index0.html'"></button>
   </div>
 
   <footer class="softkey">
     <div id="softKeysContainer">
-      <div id="softkey-left">Your</div>
+      <div id="softkey-left">Add</div>
       <div id="softkey-center"></div>
-      <div id="softkey-right">Our</div>
+      <div id="softkey-right">Open</div>
     </div>
   </footer>
 
   <script>
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keydown', function(event) {
       if (event.key === 'SoftLeft') {
-        document.getElementById('loveButton').click();
+        alert("SoftLeft pressed");
       }
+
       if (event.key === 'SoftRight') {
-        document.getElementById('poetryButton').click();
-      }
-      if (event.key === 'Enter') {
-        // Optional: default to "Your Poetry"
-        document.getElementById('loveButton').click();
+        // Trigger click on the hidden button
+        document.getElementById("softRightAction").click();
       }
     });
   </script>
+
 </body>
 </html>
