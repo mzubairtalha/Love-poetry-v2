@@ -255,29 +255,37 @@ let count = 0;
   }
   
   
-  function handleKeyDown(et) {
-  switch (et.key) {
+  function handleKeyDown(event) {
+  event.preventDefault(); // Always prevent default behavior first
+
+  switch (event.key) {
+    case 'Enter':
     case 'SoftRight':
       changeQuote();
       break;
+
     case 'SoftLeft':
       window.location.href = 'index.html';
       break;
-    case 'Enter':
+
+    case '5':
       const quoteText = document.querySelector('#quote').textContent;
       const shareText = quoteText;
+
       const msgActivity = new MozActivity({
         name: 'new',
         data: {
           type: 'websms/sms',
           body: shareText
         },
-        // set target to WhatsApp package name
         target: 'message'
       });
       break;
   }
 }
+
+// Attach listener
+window.addEventListener("keydown", handleKeyDown);
   
   
   document.addEventListener("keydown", handleKeyDown);
