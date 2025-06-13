@@ -95,11 +95,26 @@
 
   <script>
     document.addEventListener('keydown', function(event) {
-      if (event.key === 'SoftLeft') {
-        event.preventDefault(); // Prevent default SoftLeft behavior
+      // ESCAPE = Go back
+      if (event.key === 'Escape') {
+        event.preventDefault();
         window.location.href = 'index0.html';
       }
+
+      // ENTER = Simulate click on focused element
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const active = document.activeElement;
+        if (active && active.tagName === 'BUTTON') {
+          active.click();
+        }
+      }
     });
+
+    // Optional: Auto focus first button on page load for KaiOS navigation
+    window.onload = function () {
+      document.getElementById("loveButton").focus();
+    };
   </script>
 </body>
 </html>
