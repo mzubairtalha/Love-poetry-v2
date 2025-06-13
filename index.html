@@ -46,12 +46,17 @@
       color: #fff;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, background 0.3s ease;
     }
 
     .network-btn:focus {
       outline: none;
       border: 2px solid #fff;
       background: linear-gradient(90deg, #43e97b, #38f9d7);
+    }
+
+    .network-btn:hover {
+      transform: scale(1.02);
     }
 
     footer.softkey {
@@ -76,6 +81,7 @@
   <div class="header">
     <h1 class="title">Love Poetry</h1>
   </div>
+
   <div class="container">
     <button id="loveButton" class="network-btn" onclick="location.href='your_poetry.html'">Your Poetry</button>
     <button id="poetryButton" class="network-btn" onclick="location.href='our_poetry.html'">Our Poetry</button>
@@ -83,36 +89,23 @@
 
   <footer class="softkey">
     <div id="softKeysContainer">
-      <div id="softkey-left">Add</div>
-      <div id="softkey-center">Open</div>
-      <div id="softkey-right"></div>
+      <div id="softkey-left">Your</div>
+      <div id="softkey-center"></div>
+      <div id="softkey-right">Our</div>
     </div>
   </footer>
 
   <script>
-    const buttons = document.querySelectorAll('.network-btn');
-    let currentIndex = 0;
-
-    // Initial focus
-    buttons[currentIndex].focus();
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'ArrowDown') {
-        currentIndex = (currentIndex + 1) % buttons.length;
-        buttons[currentIndex].focus();
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'SoftLeft') {
+        document.getElementById('loveButton').click();
       }
-
-      else if (event.key === 'ArrowUp') {
-        currentIndex = (currentIndex - 1 + buttons.length) % buttons.length;
-        buttons[currentIndex].focus();
+      if (event.key === 'SoftRight') {
+        document.getElementById('poetryButton').click();
       }
-
-      else if (event.key === 'Enter' || event.key === 'SoftCenter') {
-        buttons[currentIndex].click();
-      }
-
-      else if (event.key === 'SoftLeft') {
-        window.location.href = 'index0.html'; // Your "Add" page
+      if (event.key === 'Enter') {
+        // Optional: default to "Your Poetry"
+        document.getElementById('loveButton').click();
       }
     });
   </script>
