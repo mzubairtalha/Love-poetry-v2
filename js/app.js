@@ -63,16 +63,22 @@ function changeQuote() {
 }
 
 function handleKeyDown(event) {
+  event.preventDefault(); // Always prevent default behavior first
+
   switch (event.key) {
+    case 'Enter':
     case 'SoftRight':
       changeQuote();
       break;
+
     case 'SoftLeft':
       window.location.href = 'index.html';
       break;
-    case 'Enter':
+
+    case '5':
       const quoteText = document.querySelector('#quote').textContent;
       const shareText = quoteText;
+
       const msgActivity = new MozActivity({
         name: 'new',
         data: {
@@ -85,6 +91,8 @@ function handleKeyDown(event) {
   }
 }
 
+// Attach listener
+window.addEventListener("keydown", handleKeyDown);
 document.addEventListener("DOMContentLoaded", () => {
   changeQuote(); // Call this to display a quote when the page loads
   getKaiAd({
