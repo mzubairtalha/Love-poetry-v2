@@ -52,7 +52,7 @@ html, body {
 /* Glowing button (same top position) */
 .button {
   position: absolute;
-  top: -7%;
+  top: 2%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: linear-gradient(45deg, #f43b47, #453a94);
