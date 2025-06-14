@@ -1,5 +1,9 @@
 const quotes = [
   {
+    quote: "To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!",
+    author: "Love Poetry Team"
+  },
+  {
     quote: "You are my sunshine, moonlight, and all of my stars. 🌞🌙✨ With you, my life is complete.",
     author: "Abdullah Shahid"
   },
@@ -42,35 +46,34 @@ const quotes = [
 ];
 
 let count = 0;
+let firstShown = false; // flag to show special message only once
 let quotesWithAuthor = [];
-let quotesWithoutAuthor = [];
-
-let showSubmitMessage = true;
 
 function changeQuote() {
-  const quoteEl = document.getElementById("quote");
-  const authorEl = document.getElementById("author");
+  count++;
 
-  if (showSubmitMessage) {
-    quoteEl.innerText = "Submit your poetry to:\nkaiosappsuggestions@gmail.com";
-    authorEl.innerText = "We’d love to feature yours! ❤️";
-    showSubmitMessage = false;
-    return; // don't continue until Enter is pressed again
+  // Show special message first
+  if (!firstShown) {
+    document.getElementById("quote").innerText = `"${quotes[0].quote}"`;
+    document.getElementById("author").innerText = `- ${quotes[0].author}`;
+    firstShown = true;
+    return;
   }
 
-  count++;
+  // Setup quotes list once (excluding the first message)
   if (quotesWithAuthor.length === 0) {
-    quotesWithAuthor = quotes.filter(q => q.author);
+    quotesWithAuthor = quotes.slice(1); // skip index 0
   }
 
   if (quotesWithAuthor.length > 0) {
     const randomIndex = Math.floor(Math.random() * quotesWithAuthor.length);
     const randomQuote = quotesWithAuthor.splice(randomIndex, 1)[0];
 
-    quoteEl.innerText = `"${randomQuote.quote}"`;
-    authorEl.innerText = randomQuote.author ? `- ${randomQuote.author}` : "";
+    document.getElementById("quote").innerText = `"${randomQuote.quote}"`;
+    document.getElementById("author").innerText = randomQuote.author ? `- ${randomQuote.author}` : "";
   }
 
+  // Show ad every 5 quotes
   if (count % 5 === 0) {
     getKaiAd({
       publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
@@ -89,8 +92,9 @@ function changeQuote() {
     });
   }
 }
+
 function handleKeyDown(event) {
-  event.preventDefault(); // Prevent system default
+  event.preventDefault();
 
   switch (event.key) {
     case 'Enter':
@@ -118,9 +122,9 @@ function handleKeyDown(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  changeQuote(); // Show initial quote
+  changeQuote();
 
-  // Load ad once on load
+  // Initial ad display
   getKaiAd({
     publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
     app: 'Love_Poetry',
