@@ -1,9 +1,5 @@
 const quotes = [
   {
-    quote: "To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!",
-    author: "Love Poetry Team"
-  },
-  {
     quote: "You are my sunshine, moonlight, and all of my stars. 🌞🌙✨ With you, my life is complete.",
     author: "Abdullah Shahid"
   },
@@ -45,35 +41,48 @@ const quotes = [
   }
 ];
 
+// The fixed 2nd quote message
+const submissionQuote = {
+  quote: "To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!",
+  author: "Love Poetry Team"
+};
+
 let count = 0;
-let firstShown = false; // flag to show special message only once
-let quotesWithAuthor = [];
+let quoteIndex = 0;
+let randomQuotes = [];
+
+function resetQuotes() {
+  randomQuotes = [...quotes];
+  // Remove one slot for the fixed 2nd quote
+  if (randomQuotes.length > 0) {
+    const randomPos = Math.floor(Math.random() * randomQuotes.length);
+    randomQuotes.splice(randomPos, 1); // remove one to avoid duplication
+  }
+}
 
 function changeQuote() {
   count++;
 
-  // Show special message first
-  if (!firstShown) {
-    document.getElementById("quote").innerText = `"${quotes[0].quote}"`;
-    document.getElementById("author").innerText = `- ${quotes[0].author}`;
-    firstShown = true;
-    return;
+  // Always reset quote list if needed
+  if (randomQuotes.length === 0) {
+    resetQuotes();
   }
 
-  // Setup quotes list once (excluding the first message)
-  if (quotesWithAuthor.length === 0) {
-    quotesWithAuthor = quotes.slice(1); // skip index 0
+  let currentQuote;
+
+  if (count === 2) {
+    // Show the special submission message on the 2nd time
+    currentQuote = submissionQuote;
+  } else {
+    // Show random quote from the remaining list
+    const randomIndex = Math.floor(Math.random() * randomQuotes.length);
+    currentQuote = randomQuotes.splice(randomIndex, 1)[0];
   }
 
-  if (quotesWithAuthor.length > 0) {
-    const randomIndex = Math.floor(Math.random() * quotesWithAuthor.length);
-    const randomQuote = quotesWithAuthor.splice(randomIndex, 1)[0];
+  document.getElementById("quote").innerText = `"${currentQuote.quote}"`;
+  document.getElementById("author").innerText = currentQuote.author ? `- ${currentQuote.author}` : "";
 
-    document.getElementById("quote").innerText = `"${randomQuote.quote}"`;
-    document.getElementById("author").innerText = randomQuote.author ? `- ${randomQuote.author}` : "";
-  }
-
-  // Show ad every 5 quotes
+  // Show ad every 5th quote
   if (count % 5 === 0) {
     getKaiAd({
       publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
@@ -122,9 +131,9 @@ function handleKeyDown(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  changeQuote();
+  changeQuote(); // Show first quote on load
 
-  // Initial ad display
+  // Optional ad on load
   getKaiAd({
     publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
     app: 'Love_Poetry',
