@@ -38,7 +38,87 @@ const quotes = [
   {
     quote: "I find pieces of you in every song I listen to. 🎵❤️",
     author: "Armaan Ali"
-  }
+  },
+  {
+  quote: "Even a thousand lifetimes wouldn’t be enough to love you. 💞",
+  author: "Ayesha Noor"
+},
+{
+  quote: "Your smile is the sunrise that brightens my soul. 🌅",
+  author: "Rehan Malik"
+},
+{
+  quote: "In your eyes, I found my home. 🏠❤️",
+  author: "Sadia Tariq"
+},
+{
+  quote: "Our hearts speak a language only love understands.",
+  author: "Bilal Shah"
+},
+{
+  quote: "You make the stars jealous with how you shine. ✨",
+  author: "Nashit Rizvi"
+},
+{
+  quote: "Loving you is like breathing — I just can’t stop. 🌬️",
+  author: "Amna Farooq"
+},
+{
+  quote: "You're the reason behind every smile I wear. 😊",
+  author: "Faraz Khan"
+},
+{
+  quote: "I’d choose you in a hundred lifetimes. Always you. 💍",
+  author: "Mahnoor Ijaz"
+},
+{
+  quote: "My heart beats poetry when you're near. 🎶❤️",
+  author: "Usman Zafar"
+},
+{
+  quote: "You are my today and all of my tomorrows. 💑",
+  author: "Fiza Saeed"
+},
+{
+  quote: "Love isn’t about finding perfection, it’s about seeing perfectly in someone.",
+  author: "Ali Rehman"
+},
+{
+  quote: "You entered my heart without permission, and now I don’t want you to leave. 🔐",
+  author: "Iqra Javed"
+},
+{
+  quote: "Our souls met long before we ever did. 🌌",
+  author: "Zayan Ali"
+},
+{
+  quote: "You’re the dream I never want to wake up from. 💤❤️",
+  author: "Hina Yousaf"
+},
+{
+  quote: "I don’t need the whole world to love me, just you. 💓",
+  author: "Rayyan Khan"
+},
+{
+  quote: "With you, love feels effortless. 🌈",
+  author: "Sahar Naveed"
+},
+{
+  quote: "I found heaven the day I found you. ☁️💖",
+  author: "Taha Rahim"
+},
+{
+  quote: "You are the peace my chaos searched for. 🕊️",
+  author: "Areeba Shah"
+},
+{
+  quote: "You’re the melody my heart never knew it needed. 🎼",
+  author: "Danish Rauf"
+},
+{
+  quote: "Forever is a promise I’m keeping for you. 🔒",
+  author: "Komal Fatima"
+}
 ];
 
 // The fixed 2nd quote message
