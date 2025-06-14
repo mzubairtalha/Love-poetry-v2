@@ -47,37 +47,47 @@ let quotesWithoutAuthor = [];
 
 function changeQuote() {
   count++;
-  if (quotesWithAuthor.length === 0) {
-    quotesWithAuthor = quotes.filter(q => q.author);
-  }
 
-  if (quotesWithAuthor.length > 0) {
-    const randomIndex = Math.floor(Math.random() * quotesWithAuthor.length);
-    const randomQuote = quotesWithAuthor.splice(randomIndex, 1)[0];
+  const quoteEl = document.getElementById("quote");
+  const authorEl = document.getElementById("author");
 
-    document.getElementById("quote").innerText = `"${randomQuote.quote}"`;
-    document.getElementById("author").innerText = randomQuote.author ? `- ${randomQuote.author}` : "";
-  }
+  // First show the fixed "submit your poetry" message
+  quoteEl.innerText = "To submit your poetry in our app,\nplease mail us your poetry at:\n\nkaiosappsuggestions@gmail.com\n\nWe would love to add it!";
+  authorEl.innerText = "";
 
-  if (count % 5 === 0) {
-    getKaiAd({
-      publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
-      app: 'Love_Poetry',
-      slot: 'Love_Poetry_slot',
-      onerror: err => console.error('Ad error:', err),
-      onready: ad => {
-        ad.call('display');
-        ad.on('display', () => {
-          document.getElementById("softKeysContainer").style.display = "none";
-        });
-        ad.on('close', () => {
-          document.getElementById("softKeysContainer").style.display = "block";
-        });
-      }
-    });
-  }
+  // Delay the actual quote by 2 seconds (2000ms)
+  setTimeout(() => {
+    if (quotesWithAuthor.length === 0) {
+      quotesWithAuthor = quotes.filter(q => q.author);
+    }
+
+    if (quotesWithAuthor.length > 0) {
+      const randomIndex = Math.floor(Math.random() * quotesWithAuthor.length);
+      const randomQuote = quotesWithAuthor.splice(randomIndex, 1)[0];
+
+      quoteEl.innerText = `"${randomQuote.quote}"`;
+      authorEl.innerText = randomQuote.author ? `- ${randomQuote.author}` : "";
+    }
+
+    if (count % 5 === 0) {
+      getKaiAd({
+        publisher: 'da08737d-861e-4ebe-bbbb-8fb90d004d39',
+        app: 'Love_Poetry',
+        slot: 'Love_Poetry_slot',
+        onerror: err => console.error('Ad error:', err),
+        onready: ad => {
+          ad.call('display');
+          ad.on('display', () => {
+            document.getElementById("softKeysContainer").style.display = "none";
+          });
+          ad.on('close', () => {
+            document.getElementById("softKeysContainer").style.display = "block";
+          });
+        }
+      });
+    }
+  }, 2000); // 2-second delay before showing real quote
 }
-
 function handleKeyDown(event) {
   event.preventDefault(); // Prevent system default
 
